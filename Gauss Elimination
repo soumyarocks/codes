@@ -1,0 +1,30 @@
+clc
+a=[2 -1 3;1 1 1;1 -1 1]
+a1=a
+b=[9 ;6; 2]
+b1=b
+disp([a b])
+
+for i=1:2
+    m=a(i,i)
+    a(i,:)=a(i,:)/m
+    b(i)=b(i)/m
+    for j=i+1:3
+        m2=a(j,i)
+        a(j,:)=a(j,:)-m2*a(i,:)
+     b(j)=b(j)-m2*b(i)
+     end
+disp([a b])
+end
+x(3)=b(3)/a(3,3)
+for i=2:-1:1
+    sum=0
+    for j=i+1:3
+        sum=sum+a(i,j)*x(j)
+    end
+x(i)=(b(i)-sum)/a(i,i)
+end
+disp(x)
+disp(a*x)
+disp(b)
+disp([a1*x b1])
