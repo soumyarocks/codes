@@ -1,0 +1,24 @@
+l=[800.3,800.4,800.6,800.7,800.9,801.0]
+T=[20,30,40,50,60,70]
+plot2d(T,l,-4)
+n=length(T)
+sT=sum(T)
+sl=sum(l)
+sT2=sum(T.*T)
+slT=sum(T.*l)
+disp(n)
+disp(sT)
+disp(sl)
+disp(sT2)
+disp(slT)
+A=[sT n;sT2 sT]
+B=[sl y;slT]
+sol=A\B
+a1=(sol(1))
+a0=(sol(2))
+disp(a1)
+disp(a0)
+Tn=-100:0.1:100
+lfit=a1*Tn+a0
+plot(Tn,lfit,'b')
+xgrid(2)
