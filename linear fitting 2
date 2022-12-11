@@ -1,0 +1,29 @@
+x=[0,1,2,3,4]
+y=[1,0,3,10,21]
+n=length(x)
+clf
+plot2d(x,y,-3)
+sx=(x)
+sy=(y)
+sx2=(x.*x)
+sx3=(x.^3)
+sx4=(x.^4)
+sxy=(x.*y)
+sx2y=(x.*x.*y)
+A=[sum(sx2) sum(sx) n;sum(sx3) sum(sx2) sum(sx);sum(sx4) sum(sx3) sum(sx2)]
+B=[sum(sy);sum(sxy);sum(sx2y)]
+sol=A\B
+a=sol(3)
+b=sol(2)
+c=sol(1)
+disp(a)
+disp(b)
+disp(c)
+zn=0:0.1:10
+yfit=a+b.*zn+c.*zn.*zn
+plot(zn,yfit,3)
+xtitle("plot x vs y","x","y")
+xgrid(5)
+legend("x","y")
+tab=[sx' sy' sx2' sx3' sx4' sxy' sx2y']
+disp(tab)
