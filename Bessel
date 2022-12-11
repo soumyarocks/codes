@@ -1,0 +1,21 @@
+funcprot(0)
+function Jn= j(n,x)
+    sum=0.0
+    for m=0:30
+        den= factorial(m)*factorial(m+n)
+        sum = sum+ ((-1)^m)*((x/2).^(n+2*m))/den
+    end
+    Jn= sum
+endfunction
+clc
+clf
+ x= 0:0.1:15 
+ for n=0:5
+     subplot(3,2,n+1)
+     plot2d(x,j(n,x),n+1)
+     xgrid(2)
+     xtitle('Plot of J'+string(n)+'(x)','x','J'+string(n)+'(x)');
+     //xtitle('Plot of Jn(x)','x','Jn(x)');
+      //hl=legend(['J0(x)';'J1(x)';'J2(x)';'J3(x)';'J4(x)';'J5(x)']);
+      hl=legend(['J'+string(n)+'(x)'],4);
+ end
