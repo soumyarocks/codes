@@ -1,0 +1,17 @@
+a=[4 -1 1; 4 -8 1 ; -2 1 5]
+b=[7 ; -21 ; 15]
+[r,c]=size(a)
+x=zeros(r,1)
+for k=1:5
+    for i=1:r
+        sum=0
+        for j=1:r
+            if (i<>j)then
+                sum=sum+a(i,j)*x(j)
+            end
+        end
+        x(i)=(b(i)-sum)/a(i,i)
+    end
+    disp(x')
+end
+disp(a*x)
