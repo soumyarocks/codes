@@ -1,0 +1,29 @@
+T=[20,30,40,50,60,70]
+l=[800.3,800.4,800.6,800.7,800.9,801.0]
+n=length(T)
+clf
+plot2d(T,l,-3)
+sT=(T)
+sl=(l)
+sT2=(T.*T)
+sTl=(T.*l)
+A=[n sum(sT);sum(sT) sum(sT2)]
+B=[sum(sl);sum(sTl)]
+sol=A\B
+a0=sol(1)
+a1=sol(2)
+disp(a0)
+disp(a1)
+//Tab=[sT;sl;sT2;sTl]
+an=10:0.1:100
+yfit=a1*an+a0
+plot(an,yfit,3)
+xtitle("plot T vs l","T","l")
+xgrid(5)
+legend("T","l")
+tab=[sT' sl' sT2' sTl']
+disp(tab)
+disp(sum(sT))
+disp(sum(sl))
+disp(sum(sT2))
+disp(sum(sTl))
